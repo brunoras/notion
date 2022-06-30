@@ -1,108 +1,17 @@
 <html>
 <head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
-<center>
-<h1></h1>
-</center>
 
-<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
-<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
-
-<style type="text/css">
-
-        #mynetwork {
-            width: 1000px;
-            height: 700px;
-            background-color: #222222;
-            border: 1px solid lightgray;
-            position: relative;
-            float: left;
-        }
-
-        
-
-        
-
-        
-</style>
 
 </head>
 
 <body>
-<div id = "mynetwork"></div>
 
-
-<script type="text/javascript">
-
-    // initialize global variables.
-    var edges;
-    var nodes;
-    var network; 
-    var container;
-    var options, data;
-
-    
-    // This method is responsible for drawing the graph, returns the drawn network
-    function drawGraph() {
-        var container = document.getElementById('mynetwork');
-        
-        
-
-        // parsing and collecting nodes and edges from the python
-        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "Bentinho", "label": "Bentinho", "shape": "dot", "size": 12}, {"font": {"color": "white"}, "id": "Jos\u00e9 Dias", "label": "Jos\u00e9 Dias", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Padua", "label": "Padua", "shape": "dot", "size": 4}, {"font": {"color": "white"}, "id": "Capit\u00fa", "label": "Capit\u00fa", "shape": "dot", "size": 11}, {"font": {"color": "white"}, "id": "Cosme", "label": "Cosme", "shape": "dot", "size": 6}, {"font": {"color": "white"}, "id": "Justina", "label": "Justina", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "D. Fortunata", "label": "D. Fortunata", "shape": "dot", "size": 4}, {"font": {"color": "white"}, "id": "Pedro", "label": "Pedro", "shape": "dot", "size": 3}, {"font": {"color": "white"}, "id": "Cabral", "label": "Cabral", "shape": "dot", "size": 5}, {"font": {"color": "white"}, "id": "D. Gloria", "label": "D. Gloria", "shape": "dot", "size": 3}, {"font": {"color": "white"}, "id": "Escobar", "label": "Escobar", "shape": "dot", "size": 8}, {"font": {"color": "white"}, "id": "Sancha", "label": "Sancha", "shape": "dot", "size": 6}, {"font": {"color": "white"}, "id": "Ezequiel", "label": "Ezequiel", "shape": "dot", "size": 6}]);
-        edges = new vis.DataSet([{"from": "Bentinho", "label": 1, "to": "Jos\u00e9 Dias", "valor": 144, "weight": 1}, {"from": "Bentinho", "label": 1, "to": "Padua", "valor": 23, "weight": 1}, {"from": "Bentinho", "label": 1, "to": "Capit\u00fa", "valor": 408, "weight": 1}, {"from": "Bentinho", "label": 1, "to": "Cosme", "valor": 5, "weight": 1}, {"from": "Bentinho", "label": 1, "to": "Justina", "valor": 40, "weight": 1}, {"from": "Bentinho", "label": 1, "to": "D. Fortunata", "valor": 8, "weight": 1}, {"from": "Bentinho", "label": 1, "to": "Pedro", "valor": 1, "weight": 1}, {"from": "Bentinho", "label": 1, "to": "Cabral", "valor": 9, "weight": 1}, {"from": "Bentinho", "label": 1, "to": "D. Gloria", "valor": 37, "weight": 1}, {"from": "Bentinho", "label": 1, "to": "Escobar", "valor": 84, "weight": 1}, {"from": "Bentinho", "label": 1, "to": "Sancha", "valor": 47, "weight": 1}, {"from": "Bentinho", "label": 1, "to": "Ezequiel", "valor": 34, "weight": 1}, {"from": "Jos\u00e9 Dias", "label": 1, "to": "Padua", "valor": 52, "weight": 1}, {"from": "Jos\u00e9 Dias", "label": 1, "to": "Justina", "valor": 84, "weight": 1}, {"from": "Jos\u00e9 Dias", "label": 1, "to": "Cosme", "valor": 27, "weight": 1}, {"from": "Jos\u00e9 Dias", "label": 1, "to": "Capit\u00fa", "valor": 91, "weight": 1}, {"from": "Jos\u00e9 Dias", "label": 1, "to": "D. Gloria", "valor": 13, "weight": 1}, {"from": "Jos\u00e9 Dias", "label": 1, "to": "Cabral", "valor": 3, "weight": 1}, {"from": "Jos\u00e9 Dias", "label": 1, "to": "Escobar", "valor": 44, "weight": 1}, {"from": "Jos\u00e9 Dias", "label": 1, "to": "Ezequiel", "valor": 6, "weight": 1}, {"from": "Jos\u00e9 Dias", "label": 1, "to": "Sancha", "valor": 8, "weight": 1}, {"from": "Padua", "label": 1, "to": "Capit\u00fa", "valor": 20, "weight": 1}, {"from": "Padua", "label": 1, "to": "D. Fortunata", "valor": 13, "weight": 1}, {"from": "Capit\u00fa", "label": 1, "to": "D. Gloria", "valor": 21, "weight": 1}, {"from": "Capit\u00fa", "label": 1, "to": "Justina", "valor": 75, "weight": 1}, {"from": "Capit\u00fa", "label": 1, "to": "D. Fortunata", "valor": 11, "weight": 1}, {"from": "Capit\u00fa", "label": 1, "to": "Cabral", "valor": 6, "weight": 1}, {"from": "Capit\u00fa", "label": 1, "to": "Escobar", "valor": 131, "weight": 1}, {"from": "Capit\u00fa", "label": 1, "to": "Cosme", "valor": 13, "weight": 1}, {"from": "Capit\u00fa", "label": 1, "to": "Sancha", "valor": 75, "weight": 1}, {"from": "Capit\u00fa", "label": 1, "to": "Ezequiel", "valor": 62, "weight": 1}, {"from": "Cosme", "label": 1, "to": "Justina", "valor": 24, "weight": 1}, {"from": "Cosme", "label": 1, "to": "Cabral", "valor": 9, "weight": 1}, {"from": "Cosme", "label": 1, "to": "Escobar", "valor": 8, "weight": 1}, {"from": "Justina", "label": 1, "to": "D. Fortunata", "valor": 4, "weight": 1}, {"from": "Justina", "label": 1, "to": "Pedro", "valor": 5, "weight": 1}, {"from": "Justina", "label": 1, "to": "Cabral", "valor": 7, "weight": 1}, {"from": "Justina", "label": 1, "to": "Escobar", "valor": 17, "weight": 1}, {"from": "Justina", "label": 1, "to": "Sancha", "valor": 11, "weight": 1}, {"from": "Justina", "label": 1, "to": "Ezequiel", "valor": 4, "weight": 1}, {"from": "Pedro", "label": 1, "to": "Escobar", "valor": 5, "weight": 1}, {"from": "Escobar", "label": 1, "to": "Sancha", "valor": 21, "weight": 1}, {"from": "Escobar", "label": 1, "to": "Ezequiel", "valor": 29, "weight": 1}, {"from": "Sancha", "label": 1, "to": "Ezequiel", "valor": 11, "weight": 1}]);
-
-        // adding nodes and edges to the graph
-        data = {nodes: nodes, edges: edges};
-
-        var options = {
-    "configure": {
-        "enabled": false
-    },
-    "edges": {
-        "color": {
-            "inherit": true
-        },
-        "smooth": {
-            "enabled": true,
-            "type": "dynamic"
-        }
-    },
-    "interaction": {
-        "dragNodes": true,
-        "hideEdgesOnDrag": false,
-        "hideNodesOnDrag": false
-    },
-    "physics": {
-        "enabled": true,
-        "stabilization": {
-            "enabled": true,
-            "fit": true,
-            "iterations": 1000,
-            "onlyDynamicEdges": false,
-            "updateInterval": 50
-        }
-    }
-};
-        
+Bruno Almeida 
         
 
         
 
-        network = new vis.Network(container, data, options);
-	 
-        
-
-
-        
-
-        return network;
-
-    }
-
-    drawGraph();
-
-</script>
 </body>
+	
+	
 </html>
